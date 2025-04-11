@@ -1,0 +1,98 @@
+.brend-slide {    
+    margin-left: 13vw;
+    margin-top: 3vh;
+    height: 95%;
+
+    &__image {
+        position: absolute;
+        z-index: 1;
+        height: 90vh;
+        left: -8vw;
+        bottom: -10vh;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        padding-left: 22vw;
+        row-gap: 20px;
+    }
+
+    &__title {
+        font-weight: 400;
+    }
+
+    &__body {
+        display: grid;
+        grid-template-areas: 
+        'wide-card card'
+        'wide-card button';
+        grid-template-columns: auto 40%;
+        grid-template-rows: auto 30%;
+        gap: 30px;
+        padding-top: 5%;
+        height: 30vh;
+    }
+
+    .card--wide {
+        grid-area: wide-card;
+        padding-left: 0;
+
+        &::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            left: -22%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40%;
+            height: 100%;
+            background-color: var(--color-white);
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            scale: 1;
+            left: 0%;
+            top: 0%;
+            transform: translateY(-50%);
+            width: 40%;
+            height: 30%;
+            background: url(../images/brend-icon1.svg) no-repeat;
+        }
+    }
+
+    &__card {
+        padding: 15%;
+        border-radius: 40px;
+        filter: drop-shadow(5.446px 8.387px 125px rgba(157,185,198,0.39));
+        background-color: var(--color-white);
+
+        &::after {
+            content: "";
+            position: absolute;
+            scale: 0.5;
+            left: 0%;
+            top: -22%;
+            transform: translateY(-50%);
+            width: 60%;
+            height: 100%;
+            background: url(../images/brend-icon2.svg) no-repeat;
+        }
+    }
+
+    .plus-icon {
+        &::after {
+          content: "+";
+          position: absolute;
+          font-size: 34px;
+          font-weight: 200;
+          color: var(--color-white);
+          left: 28px;
+          top: 23%;
+          width: 25px;
+          height: 18px;
+        }
+    } 
+}

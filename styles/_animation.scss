@@ -1,0 +1,66 @@
+.front-image {
+    position: absolute;
+    z-index: 10;
+}
+
+.back-image {
+    position: absolute;
+    z-index: -1;
+}
+
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg) translateX(20px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg) translateX(20px) rotate(360deg);
+  }
+}
+
+@keyframes orbit-onclock {
+    0% {
+      transform: rotate(0deg) translateX(20px) rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg) translateX(20px) rotate(-360deg);
+    }
+  }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spin-image {
+    animation: 
+    spin 20s linear infinite; 
+  transform-origin: center;
+}
+
+.rotating-image {
+  animation: 
+    orbit 20s linear infinite;
+  transform-origin: center;
+}
+.rotating-image-onclock {
+    animation: 
+    orbit-onclock 20s linear infinite;
+    transform-origin: center;
+  }
+
+@keyframes move-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50px);
+  }
+}
+
+.line-moving {
+  animation: move-left 5s ease forwards;
+}

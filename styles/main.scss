@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+@use 'globals';
+@use 'animation';
+@use 'brend-slide';
+@use 'main-page';
+@use 'modal-window';
+@use 'scroll-section';
+
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 30px 50px;
+    box-sizing: border-box;
+
+    &__title {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--color-title);
+    }
+
+    .vertical-line {
+        height: 100%;
+        border: 0.5px solid #282828;
+    }
+    
+    .icon {
+        width: 20px;
+        aspect-ratio: 1;
+    }
+}
+
+.footer__container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    display: flex;
+    align-items: start;
+    padding: 3vh 10vw;
+    box-sizing: border-box;
+}

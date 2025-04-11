@@ -1,0 +1,99 @@
+.modal-window {    
+    margin-left: 14vw;
+
+    &__pretitle {
+        &::after {
+            content: "";
+            position: absolute;
+            scale: 2;
+            right: 5vw;
+            width: 1em;
+            height: 1em;
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>');
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        padding: 4vh 7vh 2vw 28vh;
+        border-radius: 55px;
+        row-gap: 15px;
+        position: relative;
+        background-color: var(--color-white);
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+    }
+
+    &__list {      
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        row-gap: 20px;
+        padding-left: 5px;
+        transition: opacity 0.2s ease;
+        will-change: opacity;
+
+        &.fade-out {
+            opacity: 0;
+        }
+        
+        &.fade-in {
+            opacity: 1;
+        }
+    }
+
+    &__item {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+
+        .item__number {
+            color: #8cc9e8;
+            font-weight: 600;
+            font-family: "Montserrat", sans-serif;
+        }
+    }
+
+    &__pagination {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+        column-gap: 15px;
+
+        span {
+            font-size: 22px;
+            font-weight: 400;
+            font-family: "Rubik", sans-serif;
+            cursor: pointer;
+        }
+
+        .circle-pagination {
+            height: 6px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            border: 1px solid var(--color-circle-pagination);
+
+            &.is-active {
+                background-color: var(--color-circle-pagination);
+            }
+        }
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: -10;
+      top: -11vh;
+      width: 100vw;
+      height: 100vh;
+      left: -14vw;
+      background-color: rgba(22, 39, 62, 0.7);
+    }
+}
