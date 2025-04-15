@@ -1,5 +1,12 @@
 .modal-window {    
-    margin-left: 14vw;
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    &.show {
+        opacity: 1;
+    }
 
     &__pretitle {
         &::after {
@@ -16,9 +23,9 @@
     &__content {
         display: flex;
         flex-direction: column;
-        padding: 4vh 7vh 2vw 28vh;
+        padding: 5.5% 5% 2% 27.5%;
         border-radius: 55px;
-        row-gap: 15px;
+        row-gap: 17px;
         position: relative;
         background-color: var(--color-white);
     }
@@ -89,11 +96,11 @@
     &::before {
       content: "";
       position: absolute;
-      z-index: -10;
-      top: -11vh;
+      z-index: -10;      
       width: 100vw;
       height: 100vh;
-      left: -14vw;
+      top: -133px;
+      left: -133px;
       background-color: rgba(22, 39, 62, 0.7);
     }
 }

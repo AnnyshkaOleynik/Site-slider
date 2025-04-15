@@ -159,28 +159,21 @@ function main() {
         }
     });
     
-let isFirstModalOpen = true; 
-function openModal() {
-    isModalOpen = true;
-    modal.classList.remove('visually-hidden');
-    document.querySelector('.brend-slide').classList.add('visually-hidden');
-    document.body.style.overflow = 'hidden';
-    document.body.style.position = 'fixed';
-    
-    if (isFirstModalOpen) {
+    function openModal() {
+        isModalOpen = true;
+        modal.classList.remove('visually-hidden');
+        setTimeout(() => {
+            modal.classList.add('show');;
+        }, 30);
         updateModalContent(0, false);
-        isFirstModalOpen = false;
-    } else {
-        updateModalContent(0, true);
     }
-}
     
     function closeModal() {
         isModalOpen = false;
+        setTimeout(() => {
+            modal.classList.remove('show');
+        }, 30);
         modal.classList.add('visually-hidden');
-        document.querySelector('.brend-slide').classList.remove('visually-hidden');
-        document.body.style.overflow = '';
-        document.body.style.position = '';
     }
     
     function updateModalContent(index, shouldAnimate = true) {
@@ -289,6 +282,34 @@ function openModal() {
         document.addEventListener('mousemove', moveThumb);
         document.addEventListener('mouseup', stopDrag);
     });
+
+    scrollThumb.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        
+        const startY = e.touches[0].clientY;
+        const startTop = parseInt(scrollThumb.style.top) || 0;
+        
+        function moveThumb(e) {
+            const deltaY = e.touches[0].clientY - startY;
+            let newTop = startTop + deltaY;
+            
+            const maxTop = scrollTrack.clientHeight - scrollThumb.clientHeight + 10;
+            newTop = Math.max(0, Math.min(maxTop, newTop));
+            
+            scrollThumb.style.top = `${newTop}px`;
+            
+            const scrollRatio = newTop / maxTop;
+            contentInner.scrollTop = scrollRatio * (contentInner.scrollHeight - contentInner.clientHeight);
+        }
+        
+        function stopDrag() {
+            document.removeEventListener('touchmove', moveThumb);
+            document.removeEventListener('touchend', stopDrag);
+        }
+        
+        document.addEventListener('touchmove', moveThumb, { passive: false });
+        document.addEventListener('touchend', stopDrag, { passive: false });
+    }, { passive: false });
 
     scrollTrack.addEventListener('click', function(e) {
         const rect = scrollTrack.getBoundingClientRect();
