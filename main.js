@@ -37,6 +37,16 @@ function main() {
         </li>
         `
     ];
+
+    const homeButton = document.querySelector('.home-icon');
+    if (homeButton) {
+        homeButton.addEventListener('click', function() {
+            if (isModalOpen) {
+                closeModal();
+            }
+            showSlide(0, 'left');
+        });
+    }
     
     showSlide(currentSlide);
     function showSlide(index, direction = 'right') {
@@ -240,7 +250,6 @@ function main() {
         }
     });
 
-    const content = document.querySelector('.scroll-section__text');  
     const scrollTrack = document.querySelector('.scroll');
     const scrollThumb = document.querySelector('.scroll-thumb');
     const contentInner = document.querySelector('.inner-content');
